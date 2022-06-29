@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="166px" preserveAspectRatio="none" style="width:375px;height:166px;background:#FFFFFF;" version="1.1" viewBox="0 0 375 166" width="375px" zoomAndPan="magnify"><defs/><g><!--MD5=[30299a58ba6b78debaaed5ddbb42f29a]
+class Deck--><g id="elem_Deck"><rect codeLine="1" fill="#F1F1F1" height="145.7813" id="Deck" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="354" x="7" y="7"/><ellipse cx="161.25" cy="23" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M163.5938,18.6719 C162.6563,18.2344 162.0625,18.0938 161.1875,18.0938 C158.5625,18.0938 156.5625,20.1719 156.5625,22.8906 L156.5625,24.0156 C156.5625,26.5938 158.6719,28.4844 161.5625,28.4844 C162.7813,28.4844 163.9375,28.1875 164.6875,27.6406 C165.2656,27.2344 165.5938,26.7813 165.5938,26.3906 C165.5938,25.9375 165.2031,25.5469 164.7344,25.5469 C164.5156,25.5469 164.3125,25.625 164.125,25.8125 C163.6719,26.2969 163.6719,26.2969 163.4844,26.3906 C163.0625,26.6563 162.375,26.7813 161.6094,26.7813 C159.5625,26.7813 158.2656,25.6875 158.2656,23.9844 L158.2656,22.8906 C158.2656,21.1094 159.5156,19.7969 161.25,19.7969 C161.8281,19.7969 162.4375,19.9531 162.9063,20.2031 C163.3906,20.4844 163.5625,20.7031 163.6563,21.1094 C163.7188,21.5156 163.75,21.6406 163.8906,21.7656 C164.0313,21.9063 164.2656,22.0156 164.4844,22.0156 C164.75,22.0156 165.0156,21.875 165.1875,21.6563 C165.2969,21.5 165.3281,21.3125 165.3281,20.8906 L165.3281,19.4688 C165.3281,19.0313 165.3125,18.9063 165.2188,18.75 C165.0625,18.4844 164.7813,18.3438 164.4844,18.3438 C164.1875,18.3438 163.9844,18.4375 163.7656,18.75 L163.5938,18.6719 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="37" x="181.75" y="27.8467">Deck</text><line style="stroke:#181818;stroke-width:0.5;" x1="8" x2="360" y1="39" y2="39"/><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="15" y="47"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="328" x="27" y="55.9951">playingCardCollection : PlayingCardCollection</text><ellipse cx="18" cy="66.2969" fill="none" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="155" x="27" y="72.292">«get» count : number</text><line style="stroke:#181818;stroke-width:0.5;" x1="8" x2="360" y1="79.5938" y2="79.5938"/><ellipse cx="18" cy="90.5938" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="94" x="27" y="96.5889">constructor()</text><ellipse cx="18" cy="106.8906" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="231" x="27" y="112.8857">add(playingCards: PlayingCard[])</text><ellipse cx="18" cy="123.1875" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="137" x="27" y="129.1826">deal() : PlayingCard</text><ellipse cx="18" cy="139.4844" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="59" x="27" y="145.4795">shuffle()</text></g><!--MD5=[1f9464a4ab4735ceac284cd9b0c9654e]
+@startuml
+class Deck{
+    -playingCardCollection : PlayingCardCollection
+    +«get» count : number
+    +constructor()
+    +add(playingCards: PlayingCard[])
+    +deal() : PlayingCard
+    +shuffle()
+  }
+@enduml
+
+PlantUML version 1.2022.6beta5(Unknown compile time)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>
