@@ -479,7 +479,7 @@ Samtliga klasser och deras medlemmar måste implementeras exakt enligt klassdiag
 - `compareHands`, privat metod som jämför två spelares händer och returnerar vinnaren.
 - `deal`, privat metod som returnerar nästa spelkort från kortleken.
 - `playOut`, en spelomgångs delomgång under vilken en spelare drar kort för att given därefter drar sina kort.
-- `playRounds`, publik metod vars parameter bestämmer hur många spelrundor som ska spelas. Efter varje spelrundas delomgång ska aktuell delomgångs resultat presenteras.
+- `playRounds`, publik metod vars parameter bestämmer hur många spelrundor som ska spelas. Resultat från spelrundornas delomgångar lagras och returneras.
 
 ### Deck
 
