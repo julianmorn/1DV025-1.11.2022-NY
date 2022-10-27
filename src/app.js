@@ -19,6 +19,11 @@ try {
   // ...shuffle the deck and show the playing cards again.
   deck.shuffle()
   console.log(deck.toString(), '\n')
+
+  const deltCard = deck.deal()
+  console.log(deck.toString(), '\n')
+  console.log('Delt card: ' + deltCard.toString(), '\n')
+  
 } catch (e) {
   console.error(e.message)
 }

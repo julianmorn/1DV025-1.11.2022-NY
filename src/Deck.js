@@ -34,6 +34,16 @@ export class Deck {
   }
 
   /**
+   *
+   * Deals the top card of the deck.
+   *
+   * @returns {PlayingCard} Top card of the deck
+   */
+  deal () {
+    return this.PlayingCard.pop()
+  }
+
+  /**
    * Shuffles the array of playing cards in place.
    */
   shuffle () {
