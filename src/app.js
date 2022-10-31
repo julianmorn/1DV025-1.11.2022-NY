@@ -12,7 +12,7 @@
 import { CardTable } from './CardTable.js'
 
 try {
-  const numberOfPlayers = 2
+  const numberOfPlayers = 7
   const cardTable = new CardTable(numberOfPlayers)
 } catch (e) {
   console.error(e.message)

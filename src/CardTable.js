@@ -94,5 +94,12 @@ export class CardTable {
    * Compare hand of all players.
    */
   playOut () {
+    this.deal()
+    if (this.dealer.canHit) {
+      const deltCard = Deck.deal()
+      console.log(Deck.toString(), '\n')
+      console.log('Delt card: ' + deltCard.toString(), '\n')
+      this.dealer.addToHand(deltCard)
+    }
   }
 }
