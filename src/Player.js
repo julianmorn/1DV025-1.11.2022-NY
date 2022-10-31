@@ -75,7 +75,7 @@ export class Player {
     if (cardStringArray.length > 0) {
       cardString = cardStringArray.join(', ')
     }
-    return `${this.nickname} : ${cardString}`
+    return `${this.#nickname} : ${cardString}`
   }
 
    /**

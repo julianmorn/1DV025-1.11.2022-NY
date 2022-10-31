@@ -71,9 +71,18 @@ export class CardTable {
   }
 
   /**
-   * Compare hand of all players.
+   * Compare hands.
+   *
+   * @param {Player} player
+   * @param {Player} dealer
+   * @returns {Player} Returns the winning player.
    */
-  compareHands () {
+  compareHands (player, dealer) {
+    if (!player.isBusted && (player.isNaturalWinner || dealer.isBusted || player.valueOf() > dealer.valueOf())) {
+      return player
+    } else {
+      return dealer
+    }
   }
 
   /**
