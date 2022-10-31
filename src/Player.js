@@ -49,6 +49,13 @@ export class Player {
    */
   addToHand (playingCard) {
     this.hand.push(playingCard)
+    if (this.valueOf() === 21) {
+      this.#isNaturalWinner = true
+    } else if (this.valueOf() >= this.standValue) {
+      this.#canHit = false
+    } else if (this.valueOf() > 21) {
+      this.#isBusted = true
+    }
   }
 
   /**
