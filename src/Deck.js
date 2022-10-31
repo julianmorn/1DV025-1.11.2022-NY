@@ -40,7 +40,7 @@ export class Deck {
    * @returns {PlayingCard} Top card of the deck
    */
   deal () {
-    return this.PlayingCard.pop()
+    return this.#playingCards.pop()
   }
 
   /**

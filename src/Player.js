@@ -1,9 +1,15 @@
+import { Deck } from './Deck'
 import { PlayingCard } from './PlayingCard'
 
 /**
  * Represents a Player.
  */
 export class Player {
+  #canHit = false
+  #isBusted = false
+  #isNaturalWinner = false
+  #nickname = ''
+
   /**
    * Creates a new Player object.
    *
@@ -25,15 +31,18 @@ export class Player {
      */
     this.standValue = standValue
 
+    this.canHit = false
+
     /**
      * Hand of the player.
      *
      *@type {PlayingCard[]}
      */
     this.hand = []
+    this.hand = new Deck(deck)
 
     // Make the object immutable.
-    Object.freeze(this)
+    //Object.freeze(this)
   }
 
   /**
@@ -76,4 +85,21 @@ export class Player {
     })
     return totalValue
   }
+
+  get canHit () {
+    return this.#canHit
+  }
+
+  get isBusted () {
+    return this.#isBusted
+  }
+
+  get isNaturalWinner () {
+    return this.#isNaturalWinner
+  }
+
+  get nickname () {
+    return this.#nickname
+  }
 }
+

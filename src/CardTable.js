@@ -30,9 +30,17 @@ export class CardTable {
 
     for (let i = 0; i < numberOfPlayers; i++) {
       const nickname = `player ${i + 1}`
-      const player = new Player(nickname)
+      const canHit = 14
+      } if (2 < i <= 6) {
+        const player = new Player (nickname, 12 + i)
+      }
+      else if (i > 6) {
+        const player = new Player(nickname, Math.floor(Math.random() * 16) + 12)
+      }
+      const player = new Player (nickname, canHit)
       players.push(player)
     }
+
 
     /**
      * The players.
