@@ -9,21 +9,11 @@
 
 // TODO: Replace the code below with your own game logic.
 
-import { Deck } from './Deck.js'
+import { CardTable } from './CardTable.js'
 
 try {
-  // Create a deck, view its 52 playing cards,...
-  const deck = new Deck()
-  console.log(deck.toString(), '\n')
-
-  // ...shuffle the deck and show the playing cards again.
-  deck.shuffle()
-  console.log(deck.toString(), '\n')
-
-  const deltCard = deck.deal()
-  console.log(deck.toString(), '\n')
-  console.log('Delt card: ' + deltCard.toString(), '\n')
-  
+  const numberOfPlayers = 2
+  const cardTable = new CardTable(numberOfPlayers)
 } catch (e) {
   console.error(e.message)
 }

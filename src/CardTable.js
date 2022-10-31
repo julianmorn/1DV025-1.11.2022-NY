@@ -30,17 +30,16 @@ export class CardTable {
 
     for (let i = 0; i < numberOfPlayers; i++) {
       const nickname = `player ${i + 1}`
-      const canHit = 14
-      } if (2 < i <= 6) {
-        const player = new Player (nickname, 12 + i)
+      const standValue = 14
+      let player = new Player(nickname, standValue)
+      if (i <= 6) {
+        player = new Player(nickname, 12 + i)
+      } else if (i > 6) {
+        player = new Player(nickname, Math.floor(Math.random() * 16) + 12)
       }
-      else if (i > 6) {
-        const player = new Player(nickname, Math.floor(Math.random() * 16) + 12)
-      }
-      const player = new Player (nickname, canHit)
       players.push(player)
     }
-
+    console.log(players)
 
     /**
      * The players.
@@ -81,6 +80,11 @@ export class CardTable {
    * deal a card to player.
    */
   deal () {
+    this.players.forEach(player => {
+      const deltCard = Deck.deal()
+      console.log(Deck.toString(), '\n')
+      console.log('Delt card: ' + deltCard.toString(), '\n')
+    })
   }
 
   /**

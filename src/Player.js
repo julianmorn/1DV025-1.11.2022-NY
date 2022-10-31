@@ -1,5 +1,5 @@
-import { Deck } from './Deck'
-import { PlayingCard } from './PlayingCard'
+/* eslint-disable jsdoc/require-jsdoc */
+import { PlayingCard } from './PlayingCard.js'
 
 /**
  * Represents a Player.
@@ -22,7 +22,7 @@ export class Player {
      *
      * @type {string}
      */
-    this.nickname = nickname
+    this.#nickname = nickname
 
     /**
      * The stand value of the player.
@@ -31,18 +31,15 @@ export class Player {
      */
     this.standValue = standValue
 
-    this.canHit = false
-
     /**
      * Hand of the player.
      *
      *@type {PlayingCard[]}
      */
     this.hand = []
-    this.hand = new Deck(deck)
 
     // Make the object immutable.
-    //Object.freeze(this)
+    // Object.freeze(this)
   }
 
   /**
@@ -102,4 +99,3 @@ export class Player {
     return this.#nickname
   }
 }
-
