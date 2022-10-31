@@ -81,9 +81,12 @@ export class CardTable {
    */
   deal () {
     this.players.forEach(player => {
-      const deltCard = Deck.deal()
-      console.log(Deck.toString(), '\n')
-      console.log('Delt card: ' + deltCard.toString(), '\n')
+      if (player.canHit && !player.isBusted) {
+        const deltCard = Deck.deal()
+        console.log(Deck.toString(), '\n')
+        console.log('Delt card: ' + deltCard.toString(), '\n')
+        player.addToHand(deltCard)
+      }
     })
   }
 
