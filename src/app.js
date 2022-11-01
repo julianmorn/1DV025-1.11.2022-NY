@@ -21,6 +21,7 @@ try {
     throw new Error('Invalid number of rounds')
   }
   const cardTable = new CardTable(numberOfPlayers)
+  cardTable.playRounds()
   cardTable.playOut()
 } catch (e) {
   console.error(e.message)

@@ -6,6 +6,7 @@ import { PlayingCard } from './PlayingCard.js'
  * Represents a CardTable.
  */
 export class CardTable {
+  #players
   /**
    * Creates a new CardTable object.
    *
@@ -22,22 +23,21 @@ export class CardTable {
     // Make the object immutable.
     Object.freeze(this)
 
-    if (numberOfPlayers > 7 && numberOfPlayers !== 52) {
-      throw new Error('Invalid number of players')
-    }
-
     const players = []
 
     for (let i = 0; i < numberOfPlayers; i++) {
-      const nickname = `player ${i + 1}`
+      const nickname = `Player ${i + 1}`
       const standValue = 14
       let player = new Player(nickname, standValue)
-      if (i <= 6) {
-        player = new Player(nickname, 12 + i)
-      } else if (i > 6) {
-        player = new Player(nickname, Math.floor(Math.random() * 16) + 12)
+      if (i < 4) {
+        player = new Player(nickname, 14 + i)
+      } else if (i < 6) {
+        player = new Player(nickname, standValue)
+      } else {
+        const random = Math.floor(Math.random() * (18 - 11 + 1) + 11)
+        player = new Player(nickname, random)
       }
-      players.push(player)
+      players.push(nickname, player)
     }
     console.log(players)
 
@@ -118,5 +118,19 @@ export class CardTable {
     const loser = dealerWon ? player : dealer
 
     console.log('The winner is', winner.toString())
+    console.log('The loser is', loser.toString())
+  }
+
+  playRounds () {
+    console.log('this.#players :>>', this.#players)
+    this.#players.forEach((player) => {
+      const card = this.deal()
+      player.addToHand(card)
+    })
+
+    this.#players.forEach((player) => {
+      this.playOut(this.dealer, player)
+      this.dealer.discardHand()
+    })
   }
 }
