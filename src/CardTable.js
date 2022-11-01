@@ -100,7 +100,10 @@ export class CardTable {
   }
 
   /**
-   * Compare hand of all players.
+   * Play out
+   *
+   * @param {Player} dealer
+   * @param {Player} player
    */
   playOut () {
     this.deal()

@@ -12,7 +12,14 @@
 import { CardTable } from './CardTable.js'
 
 try {
-  const numberOfPlayers = 7
+  const numberOfRounds = Number(process.argv[2] || 1)
+  const numberOfPlayers = Number(process.argv[3] || 3)
+  if (numberOfPlayers > 1 && numberOfPlayers > 7 && numberOfPlayers !== 52) {
+    throw new Error('Invalid number of players')
+  }
+  if (numberOfRounds < 1 || numberOfRounds > 5) {
+    throw new Error('Invalid number of rounds')
+  }
   const cardTable = new CardTable(numberOfPlayers)
   cardTable.playOut()
 } catch (e) {
