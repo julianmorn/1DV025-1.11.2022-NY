@@ -78,9 +78,9 @@ export class Player {
     return `${this.#nickname} : ${cardString}`
   }
 
-   /**
+  /**
    * Points of player.
-   * @return {number}
+   * @returns {number}
    */
   valueOf () {
     let totalValue = 0

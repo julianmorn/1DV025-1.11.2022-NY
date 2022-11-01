@@ -87,31 +87,36 @@ export class CardTable {
 
   /**
    * deal a card to player.
+   *
+   * @returns {Deck} deal a card to a player
    */
   deal () {
-    this.players.forEach(player => {
-      if (player.canHit && !player.isBusted) {
-        const deltCard = Deck.deal()
-        console.log(Deck.toString(), '\n')
-        console.log('Delt card: ' + deltCard.toString(), '\n')
-        player.addToHand(deltCard)
-      }
-    })
+    const deltCard = this.Deck.deal()
+    return deltCard
   }
 
   /**
    * Play out
    *
-   * @param {Player} dealer
    * @param {Player} player
+   * @param {Player} dealer
    */
-  playOut () {
-    this.deal()
-    if (this.dealer.canHit) {
-      const deltCard = Deck.deal()
-      console.log(Deck.toString(), '\n')
-      console.log('Delt card: ' + deltCard.toString(), '\n')
-      this.dealer.addToHand(deltCard)
+  playOut (player, dealer) {
+    while (player.canHit && !player.isBusted && !player.isNaturalWinner) {
+      const card = this.deal()
+      player.addToHand(card)
     }
+
+    if (player.valueOf() < 21) {
+      while (dealer.canHit && !dealer.isBusted && !dealer.isNaturalWinner) {
+        const card = this.deal()
+        dealer.addToHand(card)
+      }
+    }
+    const winner = this.compareHands(this.dealer, player)
+    const dealerWon = winner.nickname === 'dealer'
+    const loser = dealerWon ? player : dealer
+
+    console.log('The winner is', winner.toString())
   }
 }
