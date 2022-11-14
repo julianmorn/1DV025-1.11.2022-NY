@@ -20,9 +20,6 @@ export class CardTable {
      */
     this.numberOfPlayers = numberOfPlayers
 
-    // Make the object immutable.
-    Object.freeze(this)
-
     const players = []
 
     for (let i = 0; i < numberOfPlayers; i++) {
@@ -37,23 +34,16 @@ export class CardTable {
         const random = Math.floor(Math.random() * (18 - 11 + 1) + 11)
         player = new Player(nickname, random)
       }
-      players.push(nickname, player)
+      players.push(player)
     }
-    console.log(players)
 
-    /**
-     * The players.
-     *
-     * @type {Player[]}
-     */
-    this.players = players
-
+    this.#players = players
     /**
      * The discard pile.
      *
      * @type {PlayingCard[]}
      */
-    this.playingCard = []
+    this.discardPile = []
 
     /**
      * The dealer.
@@ -68,6 +58,7 @@ export class CardTable {
      * @type {Deck}
      */
     this.Deck = new Deck()
+    this.Deck.shuffle()
   }
 
   /**
@@ -102,6 +93,7 @@ export class CardTable {
    * @param {Player} dealer
    */
   playOut (player, dealer) {
+    console.log(dealer)
     while (player.canHit && !player.isBusted && !player.isNaturalWinner) {
       const card = this.deal()
       player.addToHand(card)
@@ -112,17 +104,24 @@ export class CardTable {
         const card = this.deal()
         dealer.addToHand(card)
       }
-    }
-    const winner = this.compareHands(this.dealer, player)
-    const dealerWon = winner.nickname === 'dealer'
+    } console.log('player', player)
+    console.log('dealer', dealer)
+    const winner = this.compareHands(player, dealer)
+    console.log('winner', winner.nickname)
+  /*
+    const dealerWon = winner.nickname === dealer.nickname
     const loser = dealerWon ? player : dealer
 
     console.log('The winner is', winner.toString())
     console.log('The loser is', loser.toString())
+    */
   }
 
+  /**
+   *
+   *@param {}
+   */
   playRounds () {
-    console.log('this.#players :>>', this.#players)
     this.#players.forEach((player) => {
       const card = this.deal()
       player.addToHand(card)

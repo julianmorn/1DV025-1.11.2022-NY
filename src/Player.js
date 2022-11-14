@@ -5,11 +5,10 @@ import { PlayingCard } from './PlayingCard.js'
  * Represents a Player.
  */
 export class Player {
-  #canHit = false
+  #canHit = true
   #isBusted = false
   #isNaturalWinner = false
   #nickname = ''
-
   /**
    * Creates a new Player object.
    *
@@ -75,11 +74,11 @@ export class Player {
     if (cardStringArray.length > 0) {
       cardString = cardStringArray.join(', ')
     }
-    return `${this.#nickname} : ${cardString}`
+    return `${this.nickname} : ${cardString}`
   }
 
   /**
-   * Points of player.
+   * Card value of player.
    * @returns {number}
    */
   valueOf () {
