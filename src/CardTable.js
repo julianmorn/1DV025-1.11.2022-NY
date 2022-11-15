@@ -6,7 +6,13 @@ import { PlayingCard } from './PlayingCard.js'
  * Represents a CardTable.
  */
 export class CardTable {
+/**
+   * Array of players.
+   *
+   * @type {Player[]}
+   */
   #players
+
   /**
    * Creates a new CardTable object.
    *
@@ -26,18 +32,19 @@ export class CardTable {
       const nickname = `Player ${i + 1}`
       const standValue = 14
       let player = new Player(nickname, standValue)
-      if (i < 4) {
-        player = new Player(nickname, 14 + i)
-      } else if (i < 6) {
-        player = new Player(nickname, standValue)
-      } else {
+      if (i < 3) {
         const random = Math.floor(Math.random() * (18 - 11 + 1) + 11)
         player = new Player(nickname, random)
+      } else if (i < 6) {
+        player = new Player(nickname, 14 + i)
+      } else {
+        player = new Player(nickname, standValue)
       }
       players.push(player)
     }
 
     this.#players = players
+
     /**
      * The discard pile.
      *
@@ -51,6 +58,7 @@ export class CardTable {
      * @type {Player}
      */
     this.dealer = new Player('Dealer')
+    this.dealer.standValue = Math.floor(Math.random() * (18 - 13 + 1) + 13)
 
     /**
      * The deck.
@@ -93,6 +101,7 @@ export class CardTable {
    * @param {Player} dealer
    */
   playOut (player, dealer) {
+    console.log(player)
     console.log(dealer)
     while (player.canHit && !player.isBusted && !player.isNaturalWinner) {
       const card = this.deal()
@@ -104,32 +113,30 @@ export class CardTable {
         const card = this.deal()
         dealer.addToHand(card)
       }
-    } console.log('player', player)
-    console.log('dealer', dealer)
+    }
     const winner = this.compareHands(player, dealer)
-    console.log('winner', winner.nickname)
-  /*
     const dealerWon = winner.nickname === dealer.nickname
     const loser = dealerWon ? player : dealer
 
     console.log('The winner is', winner.toString())
     console.log('The loser is', loser.toString())
-    */
   }
 
   /**
+   * Play rounds
    *
-   *@param {}
+   *@param {number} numberOfRounds
    */
-  playRounds () {
-    this.#players.forEach((player) => {
-      const card = this.deal()
-      player.addToHand(card)
-    })
-
-    this.#players.forEach((player) => {
-      this.playOut(this.dealer, player)
-      this.dealer.discardHand()
-    })
+  playRounds (numberOfRounds) {
+    for (let i = 0; i < numberOfRounds; i++) {
+      this.#players.forEach((player) => {
+        const card = this.deal()
+        player.addToHand(card)
+      })
+      this.#players.forEach((player) => {
+        this.playOut(player, this.dealer)
+        this.dealer.discardHand()
+      })
+    }
   }
 }

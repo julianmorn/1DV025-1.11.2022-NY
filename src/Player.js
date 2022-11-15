@@ -5,10 +5,10 @@ import { PlayingCard } from './PlayingCard.js'
  * Represents a Player.
  */
 export class Player {
-  #canHit = true
-  #isBusted = false
-  #isNaturalWinner = false
-  #nickname = ''
+  canHit = true
+  isBusted = false
+  isNaturalWinner = false
+  nickname = ''
   /**
    * Creates a new Player object.
    *
@@ -21,7 +21,7 @@ export class Player {
      *
      * @type {string}
      */
-    this.#nickname = nickname
+    this.nickname = nickname
 
     /**
      * The stand value of the player.
@@ -49,11 +49,11 @@ export class Player {
   addToHand (playingCard) {
     this.hand.push(playingCard)
     if (this.valueOf() === 21) {
-      this.#isNaturalWinner = true
-    } else if (this.valueOf() >= this.standValue) {
-      this.#canHit = false
+      this.isNaturalWinner = true
     } else if (this.valueOf() > 21) {
-      this.#isBusted = true
+      this.isBusted = true
+    } else if (this.valueOf() >= this.standValue) {
+      this.canHit = false
     }
   }
 
@@ -62,6 +62,9 @@ export class Player {
    */
   discardHand () {
     this.hand = []
+    this.canHit = true
+    this.isBusted = false
+    this.isNaturalWinner = false
   }
   /**
    *Return player as a string.
@@ -87,21 +90,5 @@ export class Player {
       totalValue += card.rank
     })
     return totalValue
-  }
-
-  get canHit () {
-    return this.#canHit
-  }
-
-  get isBusted () {
-    return this.#isBusted
-  }
-
-  get isNaturalWinner () {
-    return this.#isNaturalWinner
-  }
-
-  get nickname () {
-    return this.#nickname
   }
 }
